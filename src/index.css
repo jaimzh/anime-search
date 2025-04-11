@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+/* okay so this is for the base body styles */
+@theme {
+  --text: #f3edef;
+  --background: #0b0406;
+  --primary: #de8ca6;
+  --secondary: #88163a;
+  --secondary-transparent: rgba(136, 22, 58, 18);
+  --accent: #f31259;
+  --background-image-pattern: url("/image.jpg");
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+  }
+
+  h1 {
+    @apply text-[18px] sm:text-[24px] font-bold text-center;
+  }
+
+  
+}
+
+@layer components {
+  .pattern {
+    
+    @apply bg-pattern   w-full h-full sm:w-screen sm:h-screen bg-cover bg-center absolute z-0;
+  }
+
+  .wrapper {
+    @apply px-10 py-12 sm:p-24 flex flex-col  relative z-10;
+  }
+
+  .header {
+    @apply flex flex-col items-center justify-center text-center gap-6;
+  }
+
+  .search {
+    background-color: rgba(136, 22, 58, 0.325);
+    box-shadow: inset 0px 0px 10px 1px var(--accent);
+
+    @apply px-5 py-4 rounded-4xl  w-full max-w-xl flex;
+
+    & div {
+      @apply flex items-center justify-center gap-4;
+    }
+
+    & input {
+      @apply bg-transparent outline-none text-sm sm:text-lg;
+    }
+  }
+
+  .anime-card {
+    background-color: rgba(136, 22, 58, 0.376); /* Same semi-transparent bg */
+    box-shadow: inset 0px 4px 3px 1px #f3125998; 
+    
+    @apply flex flex-col items-center justify-center gap-4  rounded-[0.5rem] p-4   max-w-sm text-center m-3   ;
+  
+   .img-container {
+      @apply w-[80%] h-auto rounded-[2px] object-scale-down   ;
+    }
+  
+  }
+
+  .anime-list{
+    @apply grid grid-cols-2 gap-5 sm:grid-cols-4;
+  }
+}
+
+@layer utilities {
+  @keyframes bounce-in {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .bounce-in {
+    animation: bounce-in 0.6s ease-out;
+    animation-delay: var(--delay, 0s);
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+
+  @keyframes bounce-in2 {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .bounce-in2 {
+    animation: bounce-in 0.6s ease-out;
+    animation-delay: var(--delay, 0s);
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+
+  .delay-100 {
+    --delay: 0.1s;
+  }
+  .delay-200 {
+    --delay: 0.2s;
+  }
+  .delay-300 {
+    --delay: 0.3s;
+  }
+}
